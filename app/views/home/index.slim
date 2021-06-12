@@ -1,0 +1,13 @@
+h1 Home Page 
+p Here is out link 
+ul 
+  - if !current_user
+    li 
+      = link_to  "sign in", new_user_session_path
+  - if current_user
+    li
+      = link_to  "sign out", destroy_user_session_path, method: :delete
+  li 
+    = link_to  "Projects", projects_path
+
+

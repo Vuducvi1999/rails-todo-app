@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+html
+  head
+    title MyProjectsPracticeLearning
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    = csrf_meta_tags 
+    = csp_meta_tag 
+    link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' 
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' 
+  
+body
+  
+  .container.bg-light.p-5.pt-3.mt-5.rounded
+    - if notice
+      p class="text-info notice"
+        = notice
+    - else
+      p class="text-danger"
+        = alert
+    = yield 

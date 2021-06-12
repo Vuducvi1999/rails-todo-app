@@ -1,0 +1,30 @@
+p id="notice" = notice 
+
+h1 Projects
+
+table class='table'
+  thead
+    tr
+      th Name
+      th Description
+      th Action
+
+
+  tbody
+    -@projects.each do |project| 
+      tr
+        td
+          .name-project = project.name 
+          .progress
+            .progress-bar style="width: #{project.progress_status}%;"
+              = project.progress_status
+              | %
+        td = project.description 
+        td 
+          = link_to 'Show', project, class:'me-2'
+          = link_to 'Edit', edit_project_path(project) , class:'me-2'
+          = link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } , class:'me-2'
+
+br
+
+= link_to 'New Project', new_project_path 

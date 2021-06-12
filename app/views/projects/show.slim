@@ -1,0 +1,35 @@
+p
+  strong Name: 
+  = @project.name 
+p
+  strong Description: 
+  = @project.description 
+
+= link_to 'Edit', edit_project_path(@project), class:'me-3'
+= link_to 'Back', projects_path 
+hr
+h3 Listing tasks
+table class="table table-hover"
+  tr
+    th Name
+    th Description
+    th Status
+    th Action
+    
+  - @project.tasks.each do |task| 
+    tr
+      td= task.name
+      td= task.description
+      td
+        div class="badge bg-#{task.status_color}"
+          = task.status
+      td
+        = link_to 'Show', [task.project, task], class:'d-inline-block me-2'
+        = link_to 'Edit', edit_project_task_path(task.project, task), class:'d-inline-block me-2'
+        = link_to 'Destroy', [task.project, task], method: :delete, class:'d-inline-block me-2',
+          data: { confirm: 'Are you sure?' }
+
+br
+
+= link_to 'New Task', new_project_task_path(@project) 
+
